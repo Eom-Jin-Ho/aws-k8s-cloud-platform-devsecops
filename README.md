@@ -1,0 +1,176 @@
+# AWS 기반 Kubernetes Cloud Platform 구축 및 DevSecOps 보안 자동화
+
+<p align="center">
+
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+</p>
+
+<p align="center">
+
+![ArgoCD](https://img.shields.io/badge/ArgoCD-EF7B4D?style=for-the-badge)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+
+</p>
+
+---
+
+## 프로젝트 소개
+
+본 프로젝트는 AWS EC2 환경에서 Kubernetes(Minikube) 기반 Cloud Platform을 직접 구축하고 운영하는 개인 프로젝트입니다.
+
+GitHub Actions와 ArgoCD를 활용하여 GitOps 기반 CI/CD 자동 배포 환경을 구성하고, Prometheus/Grafana를 이용한 모니터링 환경과 Trivy, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화를 구현하는 것을 목표로 합니다.
+
+단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · 운영 · 자동화 · 보안** 전 과정을 직접 구현하는 것을 목표로 합니다.
+
+---
+
+# 프로젝트 목표
+
+- Kubernetes 기반 Cloud Platform 구축
+- Docker 기반 컨테이너 환경 구축
+- GitHub Actions 기반 CI 자동화
+- ArgoCD 기반 GitOps CD 구축
+- Prometheus / Grafana 모니터링 구축
+- DevSecOps 보안 자동화 구현
+- Self-Healing 검증
+
+---
+
+# 설계 의사결정 (Design Decisions)
+
+## 왜 EC2를 선택했는가?
+
+Amazon EKS를 바로 사용하는 대신 EC2 기반에서 Kubernetes를 직접 구축하여 클러스터 구성과 운영 원리를 이해하는 것을 목표로 하였습니다.
+
+---
+
+## 왜 Minikube를 선택했는가?
+
+관리형 Kubernetes 서비스(EKS)보다 Kubernetes의 동작 원리를 학습하고 직접 구축하기 위해 Minikube를 선택하였습니다.
+
+향후에는 동일한 구성을 Amazon EKS로 확장할 계획입니다.
+
+---
+
+## 왜 GitHub Actions를 선택했는가?
+
+GitHub Repository와 자연스럽게 연동되며 코드 변경 시 자동으로 Docker 이미지를 빌드하고 Docker Hub에 Push하는 CI 환경을 구축하기 위함입니다.
+
+---
+
+## 왜 ArgoCD를 선택했는가?
+
+Git Repository를 Single Source of Truth로 사용하는 GitOps 방식을 구현하기 위해 선택하였습니다.
+
+---
+
+## 왜 Prometheus / Grafana를 선택했는가?
+
+Kubernetes 환경에서 가장 널리 사용되는 오픈소스 모니터링 플랫폼이며 Pod 상태, CPU, Memory 등을 실시간으로 확인하기 위해 선택하였습니다.
+
+---
+
+## 왜 Trivy를 선택했는가?
+
+Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인에 보안 검사를 포함하기 위해 선택하였습니다.
+
+---
+
+# 프로젝트 진행 현황
+
+| Day | 내용 | 상태 |
+|------|------|------|
+| Day1 | AWS EC2 / Docker / Flask | 🟡 진행 중 |
+| Day2 | Kubernetes | ⚪ 예정 |
+| Day3 | GitHub Actions | ⚪ 예정 |
+| Day4 | ArgoCD | ⚪ 예정 |
+| Day5 | Prometheus / Grafana | ⚪ 예정 |
+| Day6 | DevSecOps | ⚪ 예정 |
+| Day7 | Documentation | ⚪ 예정 |
+
+---
+
+# 프로젝트 아키텍처
+
+> 프로젝트 완료 후 draw.io Architecture Diagram을 추가할 예정입니다.
+
+```text
+Developer
+
+↓
+
+GitHub
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Hub
+
+↓
+
+ArgoCD
+
+↓
+
+Minikube
+
+↓
+
+Flask
+
+↓
+
+Prometheus
+
+↓
+
+Grafana
+```
+
+---
+
+# 프로젝트 디렉터리 구조
+
+```text
+aws-k8s-cloud-platform-devsecops/
+
+├── app/
+├── k8s/
+├── .github/
+├── argocd/
+├── monitoring/
+├── scripts/
+├── docs/
+├── README.md
+├── LICENSE
+└── .gitignore
+```
+
+---
+
+# 개발 환경
+
+| 항목 | 내용 |
+|------|------|
+| OS | Ubuntu 24.04 LTS |
+| Cloud | AWS EC2 |
+| Container | Docker |
+| Kubernetes | Minikube |
+| IDE | VS Code |
+| SCM | Git / GitHub |
+
+---
+
+# DAY1
+
+> 구축 예정
