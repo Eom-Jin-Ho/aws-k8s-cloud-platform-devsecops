@@ -43,6 +43,36 @@ GitHub Actions와 ArgoCD를 활용하여 GitOps 기반 CI/CD 자동 배포 환�
 
 ---
 
+# 프로젝트 운영 전략
+
+## Git Workflow
+
+```text
+Windows
+        │
+        ▼
+GitHub
+        ▲
+        │
+EC2
+```
+
+- Windows : README, 문서, 스크린샷 관리
+- EC2 : 애플리케이션 코드 및 Docker/Kubernetes 구축
+- GitHub : Source of Truth
+
+### Branch Strategy
+
+main
+        │
+feature/day2-kubernetes
+        │
+Merge
+        ▼
+main
+
+---
+
 # 설계 의사결정 (Design Decisions)
 
 ## 왜 EC2를 선택했는가?
@@ -87,7 +117,7 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 
 | Day | 내용 | 상태 |
 |------|------|------|
-| Day1 | AWS EC2 / Docker / Flask | 🟡 진행 중 |
+| Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
 | Day2 | Kubernetes | ⚪ 예정 |
 | Day3 | GitHub Actions | ⚪ 예정 |
 | Day4 | ArgoCD | ⚪ 예정 |
@@ -173,4 +203,79 @@ aws-k8s-cloud-platform-devsecops/
 
 # DAY1
 
-> 구축 예정
+## 구현 목표
+
+- AWS EC2(Ubuntu) 환경 구축
+- Docker Engine 설치
+- Docker 공식 Repository 구성
+- Flask API 개발
+- Docker Image 생성
+- Docker Container 실행
+- Flask API 외부 접속 확인
+
+---
+
+## 구현 결과
+
+✅ AWS EC2 생성
+
+✅ GitHub Repository 생성
+
+✅ Remote SSH 환경 구축
+
+✅ Docker 공식 Repository 등록
+
+✅ Docker Engine 설치
+
+✅ Docker 권한 설정
+
+✅ Flask API 개발
+
+✅ Docker Image 생성
+
+✅ Docker Container 실행
+
+✅ Flask API 외부 접속 성공
+
+---
+
+## 주요 구현 화면
+
+> 프로젝트 완료 후 스크린샷 추가 예정
+![alt text](<8. Docker Engine 설치.jpg>)
+![alt text](<15. Flask Container 실행.jpg>)
+![alt text](<16. Docker Container 확인.jpg>)
+![alt text](<17. Flask API 정상 동작 확인.jpg>)
+![alt text](<18. Docker Container 로그 확인.jpg>)
+
+---
+
+## Git Commit
+
+```text
+feat(init): initialize project structure and documentation
+
+feat(day1): add flask api and dockerfile
+```
+
+---
+
+## DAY1 회고
+
+Docker 설치부터 Flask API 컨테이너 실행까지의 전체 과정을 직접 구축하였다.
+
+Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으며, Docker Permission 문제를 해결하면서 Linux Group Permission 구조를 함께 이해하였다.
+
+또한 Remote SSH 기반 개발 환경을 구축하여 로컬 Windows와 EC2를 GitHub를 중심으로 연동하는 개발 환경을 구성하였다.
+
+
+
+# Next Step
+
+DAY2에서는 다음 내용을 구현할 예정입니다.
+
+- Minikube 설치
+- Kubernetes Cluster 구축
+- Deployment 생성
+- Service 생성
+- Pod 배포
