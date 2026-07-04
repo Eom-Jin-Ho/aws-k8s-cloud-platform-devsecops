@@ -118,12 +118,21 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 | Day | 내용 | 상태 |
 |------|------|------|
 | Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
+<<<<<<< HEAD
 | Day2 | Kubernetes | ⚪ 예정 |
 | Day3 | GitHub Actions | ⚪ 예정 |
 | Day4 | ArgoCD | ⚪ 예정 |
 | Day5 | Prometheus / Grafana | ⚪ 예정 |
 | Day6 | DevSecOps | ⚪ 예정 |
 | Day7 | Documentation | ⚪ 예정 |
+=======
+| Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
+| Day3 | GitHub Actions (CI) | ⚪ 예정 |
+| Day4 | ArgoCD (GitOps CD) | ⚪ 예정 |
+| Day5 | Prometheus / Grafana Monitoring | ⚪ 예정 |
+| Day6 | DevSecOps Security | ⚪ 예정 |
+| Day7 | Documentation & Portfolio | ⚪ 예정 |
+>>>>>>> feature/day2-kubernetes
 
 ---
 
@@ -193,11 +202,14 @@ aws-k8s-cloud-platform-devsecops/
 | 항목 | 내용 |
 |------|------|
 | OS | Ubuntu 24.04 LTS |
-| Cloud | AWS EC2 |
-| Container | Docker |
-| Kubernetes | Minikube |
-| IDE | VS Code |
+| Cloud | AWS EC2 (t3.medium) |
+| Storage | Amazon EBS 20GB (gp3) |
+| Container Runtime | Docker CE |
+| Kubernetes | Minikube v1.38.1 |
+| CLI | kubectl v1.36 |
+| IDE | VS Code Remote SSH |
 | SCM | Git / GitHub |
+| Git Workflow | Feature Branch Strategy |
 
 ---
 
@@ -270,6 +282,7 @@ Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으
 
 
 
+<<<<<<< HEAD
 # Next Step
 
 DAY2에서는 다음 내용을 구현할 예정입니다.
@@ -279,3 +292,95 @@ DAY2에서는 다음 내용을 구현할 예정입니다.
 - Deployment 생성
 - Service 생성
 - Pod 배포
+=======
+# DAY2
+
+## 구현 목표
+
+- GitHub SSH 인증 전환
+- Feature Branch 전략 적용
+- Minikube 설치
+- kubectl 설치
+- Kubernetes Cluster 구축
+- Deployment 생성
+- Service(NodePort) 생성
+- Flask API를 Kubernetes Pod 환경으로 이전
+- Kubernetes Self-Healing 검증
+
+---
+
+## 구현 결과
+
+✅ GitHub SSH 인증 전환
+
+✅ Feature Branch 전략 적용
+
+✅ Minikube 설치
+
+✅ kubectl 설치
+
+✅ AWS EBS 20GB 온라인 확장
+
+✅ Linux FileSystem 확장
+
+✅ Kubernetes Cluster 구축
+
+✅ Node Ready 확인
+
+✅ Deployment 생성
+
+✅ ReplicaSet 생성
+
+✅ Pod 생성
+
+✅ Service(NodePort) 생성
+
+✅ Kubernetes Self-Healing 확인
+
+✅ Kubernetes Service를 통한 Flask API 응답 확인
+
+✅ Kubernetes ImagePull 오류 해결
+
+## 주요 구현 화면
+
+![alt text](<6. Minikube 설치 및 Version 확인.jpg>)
+
+![alt text](<7. kubectl 설치 및 Version 확인.jpg>)
+
+![alt text](<8. AWS EBS 20GB 확장.jpg>)
+
+![alt text](<9. Linux 파일시스템 확장 완료.jpg>)
+
+![alt text](<10. Kubernetes Cluster 생성 성공.jpg>)
+
+![alt text](<11. Kubernetes Node Ready 확인.jpg>)
+
+![alt text](<14. Kubernetes Pod Running 확인.jpg>)
+
+![alt text](<15. Kubernetes Service 및 Flask 응답 확인.jpg>)
+
+
+## Git Commit
+
+```text
+feat(day2): build kubernetes deployment and service
+```
+
+## DAY2 회고
+
+Docker 환경에서 실행되던 Flask 애플리케이션을 Kubernetes 환경으로 이전하였다.
+
+Minikube 기반 Kubernetes Cluster를 구축하고 Deployment, ReplicaSet, Pod, Service를 직접 구성하였다.
+
+또한 AWS EBS 온라인 확장과 Linux 파일시스템 확장을 경험하였으며, ImagePull 오류를 해결하면서 Docker Image와 Kubernetes 이미지 관리 방식의 차이를 이해할 수 있었다.
+
+
+# Next Step
+
+DAY3에서는 다음 내용을 구현할 예정입니다.
+
+- GitHub Actions 기반 CI Pipeline 구축
+- Docker Image 자동 Build
+- Docker Hub 자동 Push
+- Kubernetes 자동 배포 기반 준비
+>>>>>>> feature/day2-kubernetes
