@@ -118,21 +118,12 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 | Day | 내용 | 상태 |
 |------|------|------|
 | Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
-<<<<<<< HEAD
-| Day2 | Kubernetes | ⚪ 예정 |
-| Day3 | GitHub Actions | ⚪ 예정 |
-| Day4 | ArgoCD | ⚪ 예정 |
-| Day5 | Prometheus / Grafana | ⚪ 예정 |
-| Day6 | DevSecOps | ⚪ 예정 |
-| Day7 | Documentation | ⚪ 예정 |
-=======
 | Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
 | Day3 | GitHub Actions (CI) | ⚪ 예정 |
 | Day4 | ArgoCD (GitOps CD) | ⚪ 예정 |
 | Day5 | Prometheus / Grafana Monitoring | ⚪ 예정 |
 | Day6 | DevSecOps Security | ⚪ 예정 |
 | Day7 | Documentation & Portfolio | ⚪ 예정 |
->>>>>>> feature/day2-kubernetes
 
 ---
 
@@ -282,17 +273,6 @@ Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으
 
 
 
-<<<<<<< HEAD
-# Next Step
-
-DAY2에서는 다음 내용을 구현할 예정입니다.
-
-- Minikube 설치
-- Kubernetes Cluster 구축
-- Deployment 생성
-- Service 생성
-- Pod 배포
-=======
 # DAY2
 
 ## 구현 목표
@@ -383,4 +363,3 @@ DAY3에서는 다음 내용을 구현할 예정입니다.
 - Docker Image 자동 Build
 - Docker Hub 자동 Push
 - Kubernetes 자동 배포 기반 준비
->>>>>>> feature/day2-kubernetes
