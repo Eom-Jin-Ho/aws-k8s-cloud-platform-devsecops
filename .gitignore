@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+.env
+
+# Flask
+instance/
+.webassets-cache
+
+# Docker
+*.log
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AWS / Secret
+*.pem
+*.key
+*.crt
+*.env
+.aws/
+
+# Kubernetes Secret
+secret-local.yaml
+*.secret.yaml
+
+# Terraform future use
+.terraform/
+*.tfstate
+*.tfstate.*
+
+
+docs/interview/
