@@ -65,7 +65,15 @@ EC2
 
 main
         │
-feature/day2-kubernetes
+feature/dayX
+        │
+Implement
+        │
+Commit
+        │
+Push
+        │
+Documentation
         │
 Merge
         ▼
@@ -119,7 +127,7 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 |------|------|------|
 | Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
 | Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
-| Day3 | GitHub Actions (CI) | ⚪ 예정 |
+| Day3 | GitHub Actions CI / Docker Hub | ✅ 완료 |
 | Day4 | ArgoCD (GitOps CD) | ⚪ 예정 |
 | Day5 | Prometheus / Grafana Monitoring | ⚪ 예정 |
 | Day6 | DevSecOps Security | ⚪ 예정 |
@@ -200,6 +208,7 @@ aws-k8s-cloud-platform-devsecops/
 | CLI | kubectl v1.36 |
 | IDE | VS Code Remote SSH |
 | SCM | Git / GitHub |
+| CI | GitHub Actions |
 | Git Workflow | Feature Branch Strategy |
 
 ---
@@ -242,14 +251,14 @@ aws-k8s-cloud-platform-devsecops/
 
 ---
 
-## 주요 구현 화면
+## 주요 구현 결과
 
 > 프로젝트 완료 후 스크린샷 추가 예정
-![alt text](<8. Docker Engine 설치.jpg>)
-![alt text](<15. Flask Container 실행.jpg>)
-![alt text](<16. Docker Container 확인.jpg>)
-![alt text](<17. Flask API 정상 동작 확인.jpg>)
-![alt text](<18. Docker Container 로그 확인.jpg>)
+![Docker Engine 설치](docs/screenshots/day1/8. Docker Engine 설치.jpg)
+
+![Flask Container 실행](docs/screenshots/day1/15. Flask Container 실행.jpg)
+
+![Flask API 정상 동작 확인](docs/screenshots/day1/17. Flask API 정상 동작 확인.jpg)
 
 ---
 
@@ -321,23 +330,15 @@ Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으
 
 ✅ Kubernetes ImagePull 오류 해결
 
-## 주요 구현 화면
+## 주요 구현 결과
 
-![alt text](<6. Minikube 설치 및 Version 확인.jpg>)
+![Kubernetes Cluster 생성](docs/screenshots/day2/10. Kubernetes Cluster 생성 성공.jpg)
 
-![alt text](<7. kubectl 설치 및 Version 확인.jpg>)
+![Kubernetes Node Ready](docs/screenshots/day2/11. Kubernetes Node Ready 확인.jpg)
 
-![alt text](<8. AWS EBS 20GB 확장.jpg>)
+![Kubernetes Pod Running](docs/screenshots/day2/14. Kubernetes Pod Running 확인.jpg)
 
-![alt text](<9. Linux 파일시스템 확장 완료.jpg>)
-
-![alt text](<10. Kubernetes Cluster 생성 성공.jpg>)
-
-![alt text](<11. Kubernetes Node Ready 확인.jpg>)
-
-![alt text](<14. Kubernetes Pod Running 확인.jpg>)
-
-![alt text](<15. Kubernetes Service 및 Flask 응답 확인.jpg>)
+![Kubernetes Service 및 Flask 응답](docs/screenshots/day2/15. Kubernetes Service 및 Flask 응답 확인.jpg)
 
 
 ## Git Commit
@@ -355,11 +356,157 @@ Minikube 기반 Kubernetes Cluster를 구축하고 Deployment, ReplicaSet, Pod, 
 또한 AWS EBS 온라인 확장과 Linux 파일시스템 확장을 경험하였으며, ImagePull 오류를 해결하면서 Docker Image와 Kubernetes 이미지 관리 방식의 차이를 이해할 수 있었다.
 
 
+# DAY3
+
+## 구현 목표
+
+- GitHub Actions CI Pipeline 구축
+- Docker Hub Repository 생성
+- GitHub Secrets 등록
+- Docker Image 자동 Build
+- Docker Image 자동 Push
+- Docker Hub Image 검증
+
+---
+
+## 구현 결과
+
+✅ Docker Hub Repository 생성
+
+✅ GitHub Secrets 등록
+
+✅ GitHub Actions Workflow 작성
+
+✅ Docker Build 자동화
+
+✅ Docker Hub Push 성공
+
+✅ Docker Pull 검증
+
+✅ Docker Container 실행 검증
+
+✅ GitHub Hosted Runner 기반 CI Pipeline 검증
+
+
+
+## CI Pipeline
+
+```text
+Developer
+
+↓
+
+Git Push
+
+↓
+
+GitHub Repository
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Build
+
+↓
+
+Docker Push
+
+↓
+
+Docker Hub
+
+↓
+
+Image Validation
+```
+
+
+
+## 주요 구현 결과
+
+![GitHub Actions Workflow 실행 성공](docs/screenshots/day3/14. GitHub Actions Workflow 실행 성공.jpg)
+
+![GitHub Actions Job 실행 결과](docs/screenshots/day3/15. GitHub Actions Job 실행 결과.jpg)
+
+![Docker Hub Image Push 완료](docs/screenshots/day3/16. Docker Hub Image Push 완료.jpg)
+
+![Docker Hub Image Pull 및 Container 실행 검증](docs/screenshots/day3/17. Docker Hub Image Pull 및 Container 실행 검증.jpg)
+
+## Git Commit
+
+```text
+feat(day3): configure github actions ci pipeline
+docs(day3): update documentation
+```
+
+
+## DAY3 회고
+
+GitHub Actions 기반 CI Pipeline을 구축하여 Git Push만으로 Docker Image Build와 Docker Hub Push가 자동으로 수행되는 환경을 구성하였다. 또한 Docker Hub에서 이미지를 다시 Pull하여 컨테이너 실행까지 검증함으로써 CI 결과물이 실제 운영 가능한 상태임을 확인하였다.
+
+
+
+# 현재까지 구현 흐름
+
+```text
+DAY1
+
+AWS EC2
+
+↓
+
+Docker
+
+↓
+
+Flask
+
+────────────────────────
+
+DAY2
+
+Docker
+
+↓
+
+Kubernetes
+
+↓
+
+Deployment
+
+↓
+
+Service
+
+────────────────────────
+
+DAY3
+
+Git Push
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Hub
+
+↓
+
+Image Validation
+```
+
+
 # Next Step
 
-DAY3에서는 다음 내용을 구현할 예정입니다.
+DAY4에서는 다음 내용을 구현할 예정입니다.
 
-- GitHub Actions 기반 CI Pipeline 구축
-- Docker Image 자동 Build
-- Docker Hub 자동 Push
-- Kubernetes 자동 배포 기반 준비
+- ArgoCD 설치
+- GitOps 기반 CD 구축
+- Docker Hub Image 자동 배포
+- Kubernetes Deployment 자동 동기화
