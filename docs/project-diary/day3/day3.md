@@ -206,7 +206,7 @@ DAY3 작업은 최신 Main Branch를 기준으로 시작되었다.
 
 ### 캡처
 
-![Git Main Branch 최신화 확인](docs/screenshots/day3/1. Git Main Branch 최신화 확인.jpg)
+![Git Main Branch 최신화 확인](docs/screenshots/day3/01-main-branch-updated.jpg)
 
 ---
 

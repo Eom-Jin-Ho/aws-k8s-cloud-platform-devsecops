@@ -253,7 +253,6 @@ aws-k8s-cloud-platform-devsecops/
 
 ## 주요 구현 결과
 
-> 프로젝트 완료 후 스크린샷 추가 예정
 ![Docker Engine Installation](docs/screenshots/day1/08-docker-engine-installation.jpg)
 
 ![Flask Container Running](docs/screenshots/day1/15-flask-container-running.jpg)
