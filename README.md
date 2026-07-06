@@ -254,11 +254,11 @@ aws-k8s-cloud-platform-devsecops/
 ## 주요 구현 결과
 
 > 프로젝트 완료 후 스크린샷 추가 예정
-![Docker Engine 설치](docs/screenshots/day1/8. Docker Engine 설치.jpg)
+![Docker Engine Installation](docs/screenshots/day1/08-docker-engine-installation.jpg)
 
-![Flask Container 실행](docs/screenshots/day1/15. Flask Container 실행.jpg)
+![Flask Container Running](docs/screenshots/day1/15-flask-container-running.jpg)
 
-![Flask API 정상 동작 확인](docs/screenshots/day1/17. Flask API 정상 동작 확인.jpg)
+![Flask API Response Success](docs/screenshots/day1/17-flask-api-response-success.jpg)
 
 ---
 
@@ -332,14 +332,13 @@ Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으
 
 ## 주요 구현 결과
 
-![Kubernetes Cluster 생성](docs/screenshots/day2/10. Kubernetes Cluster 생성 성공.jpg)
+![Kubernetes Cluster Created](docs/screenshots/day2/10-kubernetes-cluster-created.jpg)
 
-![Kubernetes Node Ready](docs/screenshots/day2/11. Kubernetes Node Ready 확인.jpg)
+![Kubernetes Node Ready](docs/screenshots/day2/11-kubernetes-node-ready.jpg)
 
-![Kubernetes Pod Running](docs/screenshots/day2/14. Kubernetes Pod Running 확인.jpg)
+![Kubernetes Pod Running](docs/screenshots/day2/14-kubernetes-pod-running.jpg)
 
-![Kubernetes Service 및 Flask 응답](docs/screenshots/day2/15. Kubernetes Service 및 Flask 응답 확인.jpg)
-
+![Kubernetes Service Flask Response](docs/screenshots/day2/15-kubernetes-service-flask-response.jpg)
 
 ## Git Commit
 
@@ -427,13 +426,13 @@ Image Validation
 
 ## 주요 구현 결과
 
-![GitHub Actions Workflow 실행 성공](docs/screenshots/day3/14. GitHub Actions Workflow 실행 성공.jpg)
+![GitHub Actions Workflow Success](docs/screenshots/day3/14-github-actions-workflow-success.jpg)
 
-![GitHub Actions Job 실행 결과](docs/screenshots/day3/15. GitHub Actions Job 실행 결과.jpg)
+![GitHub Actions Job Result](docs/screenshots/day3/15-github-actions-job-result.jpg)
 
-![Docker Hub Image Push 완료](docs/screenshots/day3/16. Docker Hub Image Push 완료.jpg)
+![Docker Hub Image Pushed](docs/screenshots/day3/16-dockerhub-image-pushed.jpg)
 
-![Docker Hub Image Pull 및 Container 실행 검증](docs/screenshots/day3/17. Docker Hub Image Pull 및 Container 실행 검증.jpg)
+![Docker Hub Image Pull Validation](docs/screenshots/day3/17-dockerhub-image-pull-validation.jpg)
 
 ## Git Commit
 
