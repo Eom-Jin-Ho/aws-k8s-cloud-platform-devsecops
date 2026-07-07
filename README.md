@@ -25,9 +25,11 @@
 
 본 프로젝트는 AWS EC2 환경에서 Kubernetes(Minikube) 기반 Cloud Platform을 직접 구축하고 운영하는 개인 프로젝트입니다.
 
-GitHub Actions와 ArgoCD를 활용하여 GitOps 기반 CI/CD 자동 배포 환경을 구성하고, Prometheus/Grafana를 이용한 모니터링 환경과 Trivy, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화를 구현하는 것을 목표로 합니다.
+Docker 기반 컨테이너 환경을 시작으로 Kubernetes Cluster를 구축하고, GitHub Actions(CI)와 ArgoCD(GitOps CD)를 연계하여 **Git Push만으로 Kubernetes 환경이 자동으로 동기화되는 GitOps 기반 CI/CD 파이프라인**을 구현하였습니다.
 
-단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · 운영 · 자동화 · 보안** 전 과정을 직접 구현하는 것을 목표로 합니다.
+또한 Prometheus/Grafana를 이용한 모니터링 환경과 Trivy, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화까지 단계적으로 구축하는 것을 목표로 합니다.
+
+단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · 운영 · CI/CD 자동화 · GitOps · 보안** 전 과정을 직접 구현하는 것을 목표로 합니다.
 
 ---
 
@@ -128,7 +130,7 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 | Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
 | Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
 | Day3 | GitHub Actions CI / Docker Hub | ✅ 완료 |
-| Day4 | ArgoCD (GitOps CD) | ⚪ 예정 |
+| Day4 | ArgoCD GitOps / Continuous Delivery | ✅ 완료 |
 | Day5 | Prometheus / Grafana Monitoring | ⚪ 예정 |
 | Day6 | DevSecOps Security | ⚪ 예정 |
 | Day7 | Documentation & Portfolio | ⚪ 예정 |
@@ -144,11 +146,15 @@ Developer
 
 ↓
 
-GitHub
+Git Push
 
 ↓
 
-GitHub Actions
+GitHub Repository
+
+↓
+
+GitHub Actions (CI)
 
 ↓
 
@@ -156,15 +162,23 @@ Docker Hub
 
 ↓
 
-ArgoCD
+ArgoCD (GitOps CD)
 
 ↓
 
-Minikube
+Kubernetes (Minikube)
 
 ↓
 
-Flask
+Deployment
+
+↓
+
+Docker Image Pull
+
+↓
+
+Pod (Flask)
 
 ↓
 
@@ -446,6 +460,126 @@ docs(day3): update documentation
 GitHub Actions 기반 CI Pipeline을 구축하여 Git Push만으로 Docker Image Build와 Docker Hub Push가 자동으로 수행되는 환경을 구성하였다. 또한 Docker Hub에서 이미지를 다시 Pull하여 컨테이너 실행까지 검증함으로써 CI 결과물이 실제 운영 가능한 상태임을 확인하였다.
 
 
+# DAY4
+
+## 구현 목표
+
+- ArgoCD 설치
+- Git Repository 연동
+- GitOps 기반 Continuous Delivery(CD) 구축
+- Kubernetes Application 생성
+- Manual Sync 검증
+- Auto Sync 검증
+- Git 변경 시 Kubernetes 자동 반영 검증
+
+---
+
+## 구현 결과
+
+✅ ArgoCD 설치
+
+✅ ArgoCD Dashboard 구성
+
+✅ Git Repository 연동
+
+✅ Kubernetes Application 생성
+
+✅ Manual Sync 검증
+
+✅ Auto Sync 구성
+
+✅ Git 변경 자동 감지
+
+✅ Kubernetes Deployment 자동 변경
+
+✅ Replica 변경 자동 반영 검증
+
+---
+
+## GitOps Architecture
+
+```text
+Developer
+
+↓
+
+Git Push
+
+↓
+
+GitHub Repository
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Hub
+
+↓
+
+ArgoCD
+
+↓
+
+Sync
+
+↓
+
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pod
+```
+
+---
+
+## 주요 구현 결과
+
+![ArgoCD Installed](docs/screenshots/day4/02-argocd-installed.jpg)
+
+![ArgoCD Login](docs/screenshots/day4/07-argocd-login-page.jpg)
+
+![ArgoCD Dashboard](docs/screenshots/day4/09-argocd-dashboard.jpg)
+
+![Git Repository Connected](docs/screenshots/day4/10-git-repository-connected.jpg)
+
+![Application Created](docs/screenshots/day4/11-application-created.jpg)
+
+![Manual Sync Success](docs/screenshots/day4/12-manual-sync-success.jpg)
+
+![Auto Sync Enabled](docs/screenshots/day4/18-auto-sync-enabled.jpg)
+
+![GitOps Sync Completed](docs/screenshots/day4/17-gitops-sync-completed.jpg)
+
+![Kubernetes Pods Auto Updated](docs/screenshots/day4/19-kubernetes-pods-auto-updated.jpg)
+
+---
+
+## Git Commit
+
+```text
+feat(day4): implement argocd gitops cd pipeline
+```
+
+---
+
+## DAY4 회고
+
+ArgoCD를 구축하여 Git Repository를 Single Source of Truth로 사용하는 GitOps 기반 Continuous Delivery 환경을 구현하였다.
+
+GitHub Repository와 Kubernetes Cluster를 연결하고 Kubernetes Application을 생성하여 Manual Sync와 Auto Sync를 모두 검증하였다.
+
+Git Manifest 변경 시 Kubernetes Deployment와 Pod가 자동으로 변경되는 과정을 직접 확인하면서 GitOps 기반 운영 방식의 동작 원리를 이해할 수 있었다.
+
+또한 Target Revision을 Feature Branch로 변경하여 Git Branch별 GitOps 운영 방식을 검증하였으며, ArgoCD의 Desired State와 Actual State 동기화 과정을 직접 확인하였다.
+
 
 # 현재까지 구현 흐름
 
@@ -497,14 +631,48 @@ Docker Hub
 ↓
 
 Image Validation
+
+────────────────────────
+
+DAY4
+
+DAY4
+
+Git Push
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Hub
+
+↓
+
+ArgoCD Auto Sync
+
+↓
+
+Deployment
+
+↓
+
+ReplicaSet
+
+↓
+
+Pod
 ```
 
 
 # Next Step
 
-DAY4에서는 다음 내용을 구현할 예정입니다.
+DAY5에서는 다음 내용을 구현할 예정입니다.
 
-- ArgoCD 설치
-- GitOps 기반 CD 구축
-- Docker Hub Image 자동 배포
-- Kubernetes Deployment 자동 동기화
+- Prometheus 설치
+- Grafana 설치
+- Kubernetes Monitoring 구축
+- Node Exporter 구성
+- Dashboard 구성
+- Kubernetes Metrics 수집
