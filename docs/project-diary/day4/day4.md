@@ -227,7 +227,7 @@ ArgoCD 전용 Namespace를 생성함으로써 이후 설치되는 Deployment, Se
 
 ### 캡처
 
-![ArgoCD Namespace 생성](docs/screenshots/day4/01-argocd-namespace-created.jpg)
+![ArgoCD Namespace 생성](../screenshots/day4/01-argocd-namespace-created.jpg)
 
 ---
 
