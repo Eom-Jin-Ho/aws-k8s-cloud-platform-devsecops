@@ -29,7 +29,7 @@ Docker 기반 컨테이너 환경을 시작으로 Kubernetes Cluster를 구축�
 
 또한 Prometheus/Grafana를 이용한 모니터링 환경과 Trivy, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화까지 단계적으로 구축하는 것을 목표로 합니다.
 
-단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · 운영 · CI/CD 자동화 · GitOps · 보안** 전 과정을 직접 구현하는 것을 목표로 합니다.
+단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · Kubernetes 운영 · Monitoring · CI/CD 자동화 · GitOps · DevSecOps 보안 자동화** 전 과정을 직접 구현하는 것을 목표로 합니다.
 
 ---
 
@@ -131,7 +131,7 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 | Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
 | Day3 | GitHub Actions CI / Docker Hub | ✅ 완료 |
 | Day4 | ArgoCD GitOps / Continuous Delivery | ✅ 완료 |
-| Day5 | Prometheus / Grafana Monitoring | ⚪ 예정 |
+| Day5 | Prometheus / Grafana Monitoring | ✅ 완료 |
 | Day6 | DevSecOps Security | ⚪ 예정 |
 | Day7 | Documentation & Portfolio | ⚪ 예정 |
 
@@ -168,25 +168,34 @@ ArgoCD (GitOps CD)
 
 Kubernetes (Minikube)
 
-↓
+        │
 
-Deployment
+ ┌──────┴─────────────┐
+ │                    │
 
-↓
+Application       Monitoring
 
-Docker Image Pull
+ │                    │
 
-↓
+Deployment      Node Exporter
 
-Pod (Flask)
+ │              kube-state-metrics
 
-↓
+Pod (Flask)            │
 
-Prometheus
+        └──────────────┘
 
-↓
+               │
 
-Grafana
+          Prometheus
+
+               │
+
+           Grafana
+
+               │
+
+      Monitoring Dashboard
 ```
 
 ---
@@ -215,7 +224,7 @@ aws-k8s-cloud-platform-devsecops/
 | 항목 | 내용 |
 |------|------|
 | OS | Ubuntu 24.04 LTS |
-| Cloud | AWS EC2 (t3.medium) |
+| Cloud | AWS EC2 (t3.medium → t3.large) |
 | Storage | Amazon EBS 20GB (gp3) |
 | Container Runtime | Docker CE |
 | Kubernetes | Minikube v1.38.1 |
@@ -581,6 +590,121 @@ Git Manifest 변경 시 Kubernetes Deployment와 Pod가 자동으로 변경되�
 또한 Target Revision을 Feature Branch로 변경하여 Git Branch별 GitOps 운영 방식을 검증하였으며, ArgoCD의 Desired State와 Actual State 동기화 과정을 직접 확인하였다.
 
 
+# DAY5
+
+## 구현 목표
+
+- Monitoring Namespace 생성
+- Helm 설치
+- Prometheus 구축
+- Grafana 구축
+- Node Exporter 구축
+- kube-state-metrics 구축
+- Kubernetes Monitoring 구축
+- Grafana Dashboard 검증
+
+---
+
+## 구현 결과
+
+✅ Monitoring Namespace 생성
+
+✅ Helm 설치
+
+✅ Prometheus Community Repository 등록
+
+✅ kube-prometheus-stack 설치
+
+✅ Prometheus 구축
+
+✅ Grafana 구축
+
+✅ Prometheus Operator 구축
+
+✅ Node Exporter 구축
+
+✅ kube-state-metrics 구축
+
+✅ Kubernetes Cluster Monitoring
+
+✅ Kubernetes Node Monitoring
+
+✅ Grafana Dashboard 검증
+
+✅ Kubernetes API Server 장애 해결
+
+---
+
+## Monitoring Architecture
+
+```text
+             Kubernetes Cluster
+
+          ┌────────┴────────┐
+          │                 │
+
+     Linux Node      Kubernetes API
+
+          │                 │
+
+   Node Exporter   kube-state-metrics
+
+          └────────┬────────┘
+
+                   │
+
+              Prometheus
+
+                   │
+
+               Grafana
+
+                   │
+
+              Dashboard
+
+                   │
+
+              Administrator
+```
+
+---
+
+## 주요 구현 결과
+
+![Monitoring Pods Ready](docs/screenshots/day5/10-monitoring-pods-ready.jpg)
+
+![Grafana Dashboard](docs/screenshots/day5/18-grafana-dashboard.jpg)
+
+![Kubernetes Cluster Dashboard](docs/screenshots/day5/19-kubernetes-cluster-dashboard.jpg)
+
+![Kubernetes Node Dashboard](docs/screenshots/day5/20-kubernetes-node-dashboard.jpg)
+
+![Monitoring Final Verification](docs/screenshots/day5/21-monitoring-final-verification.jpg)
+
+---
+
+## Git Commit
+
+```text
+feat(day5): implement kubernetes monitoring platform
+
+docs(day5): update monitoring documentation
+```
+
+---
+
+## DAY5 회고
+
+Prometheus와 Grafana를 이용하여 Kubernetes Monitoring 플랫폼을 구축하였다.
+
+Node Exporter와 kube-state-metrics를 이용해 Kubernetes Cluster와 Node의 상태를 실시간으로 수집하고 Grafana Dashboard를 통해 시각화하였다.
+
+또한 Monitoring Stack 구축 과정에서 Kubernetes API Server 장애를 직접 분석하고 EC2 인스턴스를 증설하여 문제를 해결하면서 실제 운영 환경에서 발생할 수 있는 장애 대응 경험을 수행하였다.
+
+이를 통해 구축(Build) 중심의 프로젝트를 운영(Operation) 단계까지 확장할 수 있었다.
+
+
 # 현재까지 구현 흐름
 
 ```text
@@ -636,8 +760,6 @@ Image Validation
 
 DAY4
 
-DAY4
-
 Git Push
 
 ↓
@@ -663,16 +785,43 @@ ReplicaSet
 ↓
 
 Pod
+
+────────────────────────
+
+DAY5
+
+Pod
+
+        │
+
+ ┌──────┴──────┐
+ │             │
+
+Node Exporter
+
+kube-state-metrics
+
+        │
+
+Prometheus
+
+        │
+
+Grafana
+
+        │
+
+Monitoring Dashboard
 ```
 
 
 # Next Step
 
-DAY5에서는 다음 내용을 구현할 예정입니다.
+DAY6에서는 다음 내용을 구현할 예정입니다.
 
-- Prometheus 설치
-- Grafana 설치
-- Kubernetes Monitoring 구축
-- Node Exporter 구성
-- Dashboard 구성
-- Kubernetes Metrics 수집
+- Trivy 기반 Docker Image 취약점 분석
+- GitHub Actions Security Scan
+- Kubernetes Secret
+- ConfigMap
+- NetworkPolicy
+- DevSecOps 보안 자동화
