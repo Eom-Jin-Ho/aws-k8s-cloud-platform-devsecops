@@ -33,7 +33,7 @@ jobs:
           image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/flask-api:security-scan
           format: table
           severity: HIGH,CRITICAL
-          ignore-unfixed: true
+          ignore-unfixed: false
           exit-code: '0'
 
       - name: Login to Docker Hub
