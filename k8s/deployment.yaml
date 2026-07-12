@@ -26,3 +26,10 @@ spec:
 
         ports:
         - containerPort: 5000
+
+        env:
+        - name: APP_ENV
+          valueFrom:
+            secretKeyRef:
+              name: flask-secret
+              key: APP_ENV
