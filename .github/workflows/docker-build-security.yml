@@ -1,0 +1,54 @@
+name: Docker Build, Security Scan and Push
+
+on:
+  push:
+    branches:
+      - feature/day6-devsecops
+
+  workflow_dispatch:
+
+jobs:
+  docker-security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image for security scan
+        uses: docker/build-push-action@v6
+        with:
+          context: ./app
+          file: ./app/Dockerfile
+          load: true
+          push: false
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-api:security-scan
+
+      - name: Run Trivy vulnerability scan
+        uses: aquasecurity/trivy-action@0.35.0
+        with:
+          image-ref: ${{ secrets.DOCKERHUB_USERNAME }}/flask-api:security-scan
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '0'
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Tag Docker image
+        run: |
+          docker tag \
+            "${{ secrets.DOCKERHUB_USERNAME }}/flask-api:security-scan" \
+            "${{ secrets.DOCKERHUB_USERNAME }}/flask-api:latest"
+
+      - name: Push Docker image
+        run: |
+          docker push \
+            "${{ secrets.DOCKERHUB_USERNAME }}/flask-api:latest"
