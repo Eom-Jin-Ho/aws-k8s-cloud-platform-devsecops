@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+
+metadata:
+  name: allow-ingress-from-approved-client
+
+spec:
+  podSelector:
+    matchLabels:
+      app: flask-network-test
+
+  policyTypes:
+  - Ingress
+
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          access: allowed
+
+    ports:
+    - protocol: TCP
+      port: 5000
