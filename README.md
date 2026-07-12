@@ -27,7 +27,7 @@
 
 Docker 기반 컨테이너 환경을 시작으로 Kubernetes Cluster를 구축하고, GitHub Actions(CI)와 ArgoCD(GitOps CD)를 연계하여 **Git Push만으로 Kubernetes 환경이 자동으로 동기화되는 GitOps 기반 CI/CD 파이프라인**을 구현하였습니다.
 
-또한 Prometheus/Grafana를 이용한 모니터링 환경과 Trivy, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화까지 단계적으로 구축하는 것을 목표로 합니다.
+또한 Prometheus/Grafana를 이용한 Monitoring 플랫폼과 Trivy 기반 Security Scan, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화 환경까지 직접 구축하였습니다.
 
 단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · Kubernetes 운영 · Monitoring · CI/CD 자동화 · GitOps · DevSecOps 보안 자동화** 전 과정을 직접 구현하는 것을 목표로 합니다.
 
@@ -40,7 +40,9 @@ Docker 기반 컨테이너 환경을 시작으로 Kubernetes Cluster를 구축�
 - GitHub Actions 기반 CI 자동화
 - ArgoCD 기반 GitOps CD 구축
 - Prometheus / Grafana 모니터링 구축
-- DevSecOps 보안 자동화 구현
+- DevSecOps 보안 자동화 구축
+- Container Image Security Scan 자동화
+- Kubernetes 보안 구성(Security Hardening)
 - Self-Healing 검증
 
 ---
@@ -123,6 +125,32 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 
 ---
 
+## 왜 Kubernetes Secret을 선택했는가?
+
+애플리케이션 코드와 민감한 설정 정보를 분리하기 위해 Kubernetes Secret을 적용하였습니다.
+
+실제 운영 환경에서는 AWS Secrets Manager, HashiCorp Vault 등을 사용하지만 본 프로젝트에서는 Kubernetes Secret의 동작 원리와 환경 변수 주입 방식을 검증하는 것을 목표로 하였습니다.
+
+---
+
+## 왜 ConfigMap을 선택했는가?
+
+애플리케이션의 일반 설정(LOG_LEVEL, APP_REGION 등)을 코드와 분리하여 관리하기 위해 ConfigMap을 적용하였습니다.
+
+이를 통해 운영 환경에서 설정 변경 시 애플리케이션 이미지를 다시 빌드하지 않아도 되는 구조를 구현하였습니다.
+
+---
+
+## 왜 NetworkPolicy를 선택했는가?
+
+Kubernetes Pod 간 통신을 최소 권한 원칙(Least Privilege)에 따라 제어하기 위해 NetworkPolicy를 적용하였습니다.
+
+Calico CNI를 이용하여 실제 통신 허용 및 차단을 검증하였으며, 허용된 Pod만 접근 가능한 화이트리스트 기반 정책을 구현하였습니다.
+
+---
+
+
+
 # 프로젝트 진행 현황
 
 | Day | 내용 | 상태 |
@@ -132,7 +160,7 @@ Docker Image의 취약점을 자동으로 검사하여 DevSecOps 파이프라인
 | Day3 | GitHub Actions CI / Docker Hub | ✅ 완료 |
 | Day4 | ArgoCD GitOps / Continuous Delivery | ✅ 완료 |
 | Day5 | Prometheus / Grafana Monitoring | ✅ 완료 |
-| Day6 | DevSecOps Security | ⚪ 예정 |
+| Day6 | DevSecOps Security | ✅ 완료 |
 | Day7 | Documentation & Portfolio | ⚪ 예정 |
 
 ---
@@ -155,6 +183,18 @@ GitHub Repository
 ↓
 
 GitHub Actions (CI)
+
+↓
+
+Docker Build
+
+↓
+
+Trivy Security Scan
+
+↓
+
+Security Gate
 
 ↓
 
@@ -233,6 +273,8 @@ aws-k8s-cloud-platform-devsecops/
 | SCM | Git / GitHub |
 | CI | GitHub Actions |
 | Git Workflow | Feature Branch Strategy |
+| Security Scan | Trivy v0.72.0 |
+| CNI | Calico |
 
 ---
 
@@ -704,6 +746,140 @@ Node Exporter와 kube-state-metrics를 이용해 Kubernetes Cluster와 Node의 �
 
 이를 통해 구축(Build) 중심의 프로젝트를 운영(Operation) 단계까지 확장할 수 있었다.
 
+---
+
+# DAY6
+
+## 구현 목표
+
+- Trivy 설치
+- Docker Image 취약점 분석
+- GitHub Actions Security Scan
+- Security Gate 적용
+- Kubernetes Secret 적용
+- ConfigMap 적용
+- NetworkPolicy 적용
+- DevSecOps 보안 자동화 구축
+
+---
+
+
+## 구현 결과
+
+✅ Trivy 설치
+
+✅ Docker Image 취약점 분석
+
+✅ GitHub Actions Security Scan
+
+✅ Security Gate 적용
+
+✅ HIGH / CRITICAL 취약점 차단
+
+✅ GitHub Actions Workflow 차단 검증
+
+✅ Kubernetes Secret 적용
+
+✅ ConfigMap 적용
+
+✅ NetworkPolicy 적용
+
+✅ Calico CNI 기반 NetworkPolicy 검증
+
+✅ DevSecOps 보안 자동화 구축
+
+---
+
+## DevSecOps Architecture
+
+```text
+Developer
+
+↓
+
+Git Push
+
+↓
+
+GitHub Repository
+
+↓
+
+GitHub Actions
+
+↓
+
+Docker Build
+
+↓
+
+Trivy Scan
+
+↓
+
+Security Gate
+
+↓
+
+Docker Hub
+
+↓
+
+ArgoCD
+
+↓
+
+Kubernetes
+
+        │
+
+Secret
+
+ConfigMap
+
+NetworkPolicy
+
+↓
+
+Pod (Flask)
+```
+---
+
+## 주요 구현 결과
+
+![Trivy Image Scan Result](docs/screenshots/day6/09-trivy-image-scan-result.jpg)
+
+![Security Gate Blocked Workflow](docs/screenshots/day6/18-trivy-security-gate-blocked-workflow.jpg)
+
+![Secret Environment Variable Verified](docs/screenshots/day6/28-secret-environment-variable-verified.jpg)
+
+![ConfigMap Environment Variable Verified](docs/screenshots/day6/34-configmap-environment-variable-verified.jpg)
+
+![NetworkPolicy Connection Success](docs/screenshots/day6/41-approved-client-networkpolicy-connection-success.jpg)
+
+---
+
+## Git Commit
+
+```text
+feat(day6): implement devsecops security automation
+```
+---
+
+## DAY6 회고
+
+DAY6에서는 DevSecOps 관점에서 Kubernetes 보안 자동화 환경을 구축하였다.
+
+Trivy를 이용하여 Docker Image 취약점을 분석하고 GitHub Actions에 Security Scan과 Security Gate를 추가하여 HIGH 및 CRITICAL 취약점이 존재하는 이미지는 자동으로 배포되지 않도록 구성하였다.
+
+또한 Kubernetes Secret과 ConfigMap을 적용하여 애플리케이션 설정과 민감한 정보를 분리하였으며, NetworkPolicy를 이용하여 Pod 간 통신을 최소 권한 원칙에 따라 제어하였다.
+
+특히 Calico CNI를 적용하여 NetworkPolicy가 실제로 트래픽을 차단하고 허용하는 과정을 직접 검증함으로써 단순한 리소스 생성이 아닌 보안 정책의 실제 동작까지 확인하였다.
+
+또한 NetworkPolicy는 Kubernetes만으로 동작하는 것이 아니라 Calico CNI가 실제 패킷을 제어한다는 점을 직접 검증하면서 Kubernetes 네트워크 보안 구조를 이해할 수 있었다.
+
+이를 통해 기존 CI/CD 파이프라인에 보안(Security)을 통합한 DevSecOps 환경을 완성하였다.
+
 
 # 현재까지 구현 흐름
 
@@ -812,16 +988,59 @@ Grafana
         │
 
 Monitoring Dashboard
+
+────────────────────────
+
+DAY6
+
+Git Push
+
+↓
+
+GitHub Actions
+
+↓
+
+Trivy Security Scan
+
+↓
+
+Security Gate
+
+↓
+
+Docker Hub
+
+↓
+
+ArgoCD
+
+↓
+
+Kubernetes
+
+↓
+
+Secret
+
+↓
+
+ConfigMap
+
+↓
+
+NetworkPolicy
+
+
 ```
 
 
 # Next Step
 
-DAY6에서는 다음 내용을 구현할 예정입니다.
+DAY7에서는 다음 내용을 진행할 예정입니다.
 
-- Trivy 기반 Docker Image 취약점 분석
-- GitHub Actions Security Scan
-- Kubernetes Secret
-- ConfigMap
-- NetworkPolicy
-- DevSecOps 보안 자동화
+- README 최종 정리
+- Master Document v1.6 작성
+- DAY6.md 작성
+- 면접 예상 질문 정리
+- 프로젝트 최종 리팩토링
