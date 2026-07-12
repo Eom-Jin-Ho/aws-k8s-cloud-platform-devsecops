@@ -33,3 +33,16 @@ spec:
             secretKeyRef:
               name: flask-secret
               key: APP_ENV
+        
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: flask-config
+              key: LOG_LEVEL
+
+        - name: APP_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: flask-config
+              key: APP_REGION
+              

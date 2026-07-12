@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: flask-config
+
+data:
+  LOG_LEVEL: INFO
+  APP_REGION: ap-northeast-2
