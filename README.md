@@ -21,33 +21,181 @@
 
 ---
 
-## 프로젝트 소개
+# Project Overview
 
-본 프로젝트는 AWS EC2 환경에서 Kubernetes(Minikube) 기반 Cloud Platform을 직접 구축하고 운영하는 개인 프로젝트입니다.
+본 프로젝트는 AWS EC2 환경에서 Docker와 Kubernetes(Minikube)를 기반으로 Cloud Platform을 직접 구축하고, GitHub Actions와 ArgoCD를 연계한 GitOps 기반 CI/CD 파이프라인을 구현한 개인 프로젝트입니다.
 
-Docker 기반 컨테이너 환경을 시작으로 Kubernetes Cluster를 구축하고, GitHub Actions(CI)와 ArgoCD(GitOps CD)를 연계하여 **Git Push만으로 Kubernetes 환경이 자동으로 동기화되는 GitOps 기반 CI/CD 파이프라인**을 구현하였습니다.
+또한 Prometheus·Grafana 기반 Monitoring 플랫폼과 Trivy Security Scan, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화 환경까지 구축하였습니다.
 
-또한 Prometheus/Grafana를 이용한 Monitoring 플랫폼과 Trivy 기반 Security Scan, Kubernetes Secret, ConfigMap, NetworkPolicy를 적용하여 DevSecOps 보안 자동화 환경까지 직접 구축하였습니다.
+단순한 애플리케이션 배포가 아닌 **클라우드 인프라 구축 → 컨테이너 오케스트레이션 → CI/CD 자동화 → GitOps → Monitoring → DevSecOps 보안 자동화**까지 Cloud Platform의 전체 라이프사이클을 직접 구현하고 운영하는 것을 목표로 하였습니다.
 
-단순한 애플리케이션 배포가 아닌 **클라우드 플랫폼 구축 · Kubernetes 운영 · Monitoring · CI/CD 자동화 · GitOps · DevSecOps 보안 자동화** 전 과정을 직접 구현하는 것을 목표로 합니다.
+## Tech Stack
+
+| Category | Technology |
+|-----------|------------|
+| Cloud | AWS EC2 |
+| OS | Ubuntu 24.04 LTS |
+| Container | Docker CE |
+| Orchestration | Kubernetes (Minikube) |
+| CI | GitHub Actions |
+| CD | ArgoCD (GitOps) |
+| Monitoring | Prometheus, Grafana |
+| Security | Trivy, Secret, ConfigMap, NetworkPolicy |
+| Language | Python |
+| Framework | Flask |
+| SCM | Git, GitHub |
 
 ---
 
-# 프로젝트 목표
+# Architecture
 
-- Kubernetes 기반 Cloud Platform 구축
-- Docker 기반 컨테이너 환경 구축
-- GitHub Actions 기반 CI 자동화
-- ArgoCD 기반 GitOps CD 구축
-- Prometheus / Grafana 모니터링 구축
-- DevSecOps 보안 자동화 구축
-- Container Image Security Scan 자동화
-- Kubernetes 보안 구성(Security Hardening)
-- Self-Healing 검증
+본 프로젝트는 AWS EC2 기반 Kubernetes 플랫폼에 GitHub Actions 기반 CI, ArgoCD 기반 GitOps CD, Prometheus/Grafana Monitoring, Trivy 기반 DevSecOps Security를 통합하여 구축하였습니다.
+
+<p align="center">
+  <img src="docs/architecture/architecture-diagram.png"
+       alt="AWS Kubernetes Cloud Platform & DevSecOps Architecture"
+       width="100%">
+</p>
+
+> **Architecture Overview**
+>
+> - AWS EC2 기반 Kubernetes(Minikube) 클러스터 구축
+> - GitHub Actions 기반 CI 및 Docker Hub Image Registry 연동
+> - ArgoCD 기반 GitOps Continuous Delivery 구현
+> - Prometheus & Grafana 기반 Monitoring 플랫폼 구축
+> - Trivy, Secret, ConfigMap, NetworkPolicy를 적용한 DevSecOps 보안 자동화
 
 ---
 
-# 프로젝트 운영 전략
+# Project Highlights
+
+- Built Kubernetes Cloud Platform on AWS EC2
+- Implemented GitHub Actions CI Pipeline
+- Built GitOps Continuous Delivery with ArgoCD
+- Implemented Prometheus & Grafana Monitoring
+- Applied DevSecOps Security Automation
+- Solved Real-world Kubernetes Troubleshooting
+
+
+---
+
+
+# Project Timeline
+
+| Day | Topic | Status |
+|------|--------|--------|
+| DAY1 | Infrastructure & Container | ✅ |
+| DAY2 | Kubernetes Platform | ✅ |
+| DAY3 | Continuous Integration | ✅ |
+| DAY4 | GitOps Continuous Delivery | ✅ |
+| DAY5 | Monitoring & Observability | ✅ |
+| DAY6 | DevSecOps Security | ✅ |
+| DAY7 | Documentation & Portfolio | 🚧 |
+
+
+
+## Implementation Flow
+
+```text
+Infrastructure  
+↓  
+Container  
+↓  
+Kubernetes  
+↓  
+Continuous Integration  
+↓  
+GitOps Continuous Delivery  
+↓  
+Monitoring  
+↓  
+DevSecOps Security  
+↓  
+Documentation
+```
+
+
+---
+
+# Key Features
+
+## ☁️ Cloud Platform
+
+- AWS EC2 기반 Kubernetes(Minikube) Cloud Platform 구축
+- Docker 기반 Flask 애플리케이션 컨테이너화
+- Kubernetes Deployment, Service 및 Self-Healing 검증
+- GitHub Feature Branch 기반 프로젝트 운영
+
+---
+
+## 🚀 CI/CD Automation
+
+- GitHub Actions 기반 CI Pipeline 구축
+- Docker Image 자동 Build 및 Docker Hub Push
+- GitOps 기반 ArgoCD Continuous Delivery 구현
+- Git Push만으로 Kubernetes 자동 동기화 검증
+
+---
+
+## 📊 Monitoring & Observability
+
+- Prometheus 기반 Metrics 수집
+- Grafana Dashboard 구축
+- Node Exporter 및 kube-state-metrics 구성
+- Kubernetes Cluster 및 Node 실시간 모니터링
+
+---
+
+## 🔒 DevSecOps Security
+
+- Trivy 기반 Container Image 취약점 분석
+- GitHub Actions Security Gate 구축
+- Kubernetes Secret 및 ConfigMap 적용
+- Calico CNI 기반 NetworkPolicy 구현
+- Pod 간 통신 제어 및 최소 권한(Least Privilege) 검증
+
+---
+
+## 📚 Documentation
+
+- 프로젝트 단계별 기술 문서 작성 (DAY1 ~ DAY6)
+- Master Document 기반 설계 및 운영 문서 관리
+- Troubleshooting 및 문제 해결 과정 기록
+- GitHub Portfolio 및 README 지속 개선
+
+
+
+
+
+---
+
+
+# Major Troubleshooting
+
+| Issue | Root Cause | Solution |
+|-------|------------|----------|
+| Docker Permission Denied | Docker Group Permission | Added user to docker group and reloaded session |
+| ErrImageNeverPull | imagePullPolicy configuration | Updated imagePullPolicy and rebuilt image |
+| ArgoCD Auto Sync Failed | Target Revision mismatch | Changed Target Revision to active feature branch |
+| Initial OutOfSync | Missing Tracking Annotation | Performed initial Manual Sync |
+| Kubernetes API Server Timeout | EC2 resource shortage | Upgraded EC2 from t3.medium to t3.large |
+| Grafana / ArgoCD NodePort Access Failed | Minikube Docker Driver networking limitation | Used kubectl port-forward for dashboard access |
+| NetworkPolicy Not Working | Default CNI limitation | Rebuilt Minikube with Calico CNI |
+| GitOps Branch Synchronization | Deleted feature branch | Updated ArgoCD Target Revision |
+
+## Key Takeaways
+
+- Understood Kubernetes platform architecture by building it from scratch.
+- Experienced GitOps-based Continuous Delivery using ArgoCD.
+- Built an end-to-end CI/CD pipeline with GitHub Actions.
+- Implemented monitoring using Prometheus and Grafana.
+- Applied DevSecOps security automation with Trivy and Kubernetes Security resources.
+- Improved troubleshooting skills by resolving real-world Kubernetes and infrastructure issues.
+
+
+---
+
+# Development Workflow
 
 ## Git Workflow
 
@@ -85,7 +233,8 @@ main
 
 ---
 
-# 설계 의사결정 (Design Decisions)
+
+# Design Decisions
 
 ## 왜 EC2를 선택했는가?
 
@@ -150,116 +299,7 @@ Calico CNI를 이용하여 실제 통신 허용 및 차단을 검증하였으며
 ---
 
 
-
-# 프로젝트 진행 현황
-
-| Day | 내용 | 상태 |
-|------|------|------|
-| Day1 | AWS EC2 / Docker / Flask | ✅ 완료 |
-| Day2 | Kubernetes Cluster / Deployment / Service | ✅ 완료 |
-| Day3 | GitHub Actions CI / Docker Hub | ✅ 완료 |
-| Day4 | ArgoCD GitOps / Continuous Delivery | ✅ 완료 |
-| Day5 | Prometheus / Grafana Monitoring | ✅ 완료 |
-| Day6 | DevSecOps Security | ✅ 완료 |
-| Day7 | Documentation & Portfolio | ⚪ 예정 |
-
----
-
-# 프로젝트 아키텍처
-
-> 프로젝트 완료 후 draw.io Architecture Diagram을 추가할 예정입니다.
-
-```text
-Developer
-
-↓
-
-Git Push
-
-↓
-
-GitHub Repository
-
-↓
-
-GitHub Actions (CI)
-
-↓
-
-Docker Build
-
-↓
-
-Trivy Security Scan
-
-↓
-
-Security Gate
-
-↓
-
-Docker Hub
-
-↓
-
-ArgoCD (GitOps CD)
-
-↓
-
-Kubernetes (Minikube)
-
-        │
-
- ┌──────┴─────────────┐
- │                    │
-
-Application       Monitoring
-
- │                    │
-
-Deployment      Node Exporter
-
- │              kube-state-metrics
-
-Pod (Flask)            │
-
-        └──────────────┘
-
-               │
-
-          Prometheus
-
-               │
-
-           Grafana
-
-               │
-
-      Monitoring Dashboard
-```
-
----
-
-# 프로젝트 디렉터리 구조
-
-```text
-aws-k8s-cloud-platform-devsecops/
-
-├── app/
-├── k8s/
-├── .github/
-├── argocd/
-├── monitoring/
-├── scripts/
-├── docs/
-├── README.md
-├── LICENSE
-└── .gitignore
-```
-
----
-
-# 개발 환경
+# Development Environment
 
 | 항목 | 내용 |
 |------|------|
@@ -278,45 +318,42 @@ aws-k8s-cloud-platform-devsecops/
 
 ---
 
-# DAY1
+# Project Directory
 
-## 구현 목표
+```text
+aws-k8s-cloud-platform-devsecops
 
-- AWS EC2(Ubuntu) 환경 구축
-- Docker Engine 설치
-- Docker 공식 Repository 구성
-- Flask API 개발
-- Docker Image 생성
-- Docker Container 실행
-- Flask API 외부 접속 확인
-
----
-
-## 구현 결과
-
-✅ AWS EC2 생성
-
-✅ GitHub Repository 생성
-
-✅ Remote SSH 환경 구축
-
-✅ Docker 공식 Repository 등록
-
-✅ Docker Engine 설치
-
-✅ Docker 권한 설정
-
-✅ Flask API 개발
-
-✅ Docker Image 생성
-
-✅ Docker Container 실행
-
-✅ Flask API 외부 접속 성공
+├── app                 # Flask Application
+├── k8s                 # Kubernetes Manifests
+├── argocd              # GitOps Configuration
+├── security            # DevSecOps Security Resources
+├── .github/workflows   # CI/CD Pipelines
+├── docs
+│   ├── architecture    # Architecture Diagram
+│   ├── project-diary   # Daily Technical Documentation
+│   ├── screenshots     # Project Screenshots
+│   ├── trouble-shooting# Troubleshooting Documents
+│   └── interview       # Interview Preparation
+│
+├── README.md
+└── LICENSE
+```
 
 ---
 
-## 주요 구현 결과
+# DAY1 – Infrastructure & Container
+
+## Key Deliverables
+
+- AWS EC2 기반 개발 환경 구축
+- Docker Engine 및 Docker Repository 구성
+- Flask API 컨테이너화
+- Docker Image 생성 및 Container 실행
+- Flask API 외부 접속 검증
+
+---
+
+## Screenshots
 
 ![Docker Engine Installation](docs/screenshots/day1/08-docker-engine-installation.jpg)
 
@@ -326,75 +363,36 @@ aws-k8s-cloud-platform-devsecops/
 
 ---
 
-## Git Commit
+## Lessons Learned
 
-```text
-feat(init): initialize project structure and documentation
+Docker Engine 설치부터 Flask API 컨테이너 실행까지 직접 구축하며 Docker Image와 Container의 동작 원리를 이해하였다.
 
-feat(day1): add flask api and dockerfile
-```
+또한 Docker Permission 문제를 해결하며 Linux 사용자 및 Group Permission 구조를 학습하였고, Remote SSH 기반 개발 환경을 구성하여 Windows와 EC2를 GitHub 중심으로 운영하는 개발 환경을 구축하였다.
 
 ---
 
-## DAY1 회고
+## Detail Documentation
 
-Docker 설치부터 Flask API 컨테이너 실행까지의 전체 과정을 직접 구축하였다.
+📄 Technical Documentation
 
-Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으며, Docker Permission 문제를 해결하면서 Linux Group Permission 구조를 함께 이해하였다.
-
-또한 Remote SSH 기반 개발 환경을 구축하여 로컬 Windows와 EC2를 GitHub를 중심으로 연동하는 개발 환경을 구성하였다.
+- [DAY1 – Infrastructure & Container](docs/project-diary/day1/day1.md)
 
 
 
-# DAY2
+# DAY2 – Kubernetes Platform
 
-## 구현 목표
+## Key Deliverables
 
-- GitHub SSH 인증 전환
-- Feature Branch 전략 적용
-- Minikube 설치
-- kubectl 설치
-- Kubernetes Cluster 구축
-- Deployment 생성
-- Service(NodePort) 생성
-- Flask API를 Kubernetes Pod 환경으로 이전
-- Kubernetes Self-Healing 검증
+- GitHub SSH 인증 및 Feature Branch 전략 적용
+- Minikube 기반 Kubernetes Cluster 구축
+- Deployment 및 Service 생성
+- Flask 애플리케이션의 Kubernetes 환경 이전
+- Kubernetes Self-Healing 및 Service 통신 검증
+- AWS EBS 온라인 확장 및 ImagePull 문제 해결
 
 ---
 
-## 구현 결과
-
-✅ GitHub SSH 인증 전환
-
-✅ Feature Branch 전략 적용
-
-✅ Minikube 설치
-
-✅ kubectl 설치
-
-✅ AWS EBS 20GB 온라인 확장
-
-✅ Linux FileSystem 확장
-
-✅ Kubernetes Cluster 구축
-
-✅ Node Ready 확인
-
-✅ Deployment 생성
-
-✅ ReplicaSet 생성
-
-✅ Pod 생성
-
-✅ Service(NodePort) 생성
-
-✅ Kubernetes Self-Healing 확인
-
-✅ Kubernetes Service를 통한 Flask API 응답 확인
-
-✅ Kubernetes ImagePull 오류 해결
-
-## 주요 구현 결과
+## Screenshots
 
 ![Kubernetes Cluster Created](docs/screenshots/day2/10-kubernetes-cluster-created.jpg)
 
@@ -404,53 +402,34 @@ Docker 공식 Repository를 사용하여 최신 Docker Engine을 설치하였으
 
 ![Kubernetes Service Flask Response](docs/screenshots/day2/15-kubernetes-service-flask-response.jpg)
 
-## Git Commit
+---
 
-```text
-feat(day2): build kubernetes deployment and service
-```
+## Lessons Learned
 
-## DAY2 회고
+기존 Docker 환경에서 실행되던 Flask 애플리케이션을 Kubernetes 환경으로 이전하며 Deployment, ReplicaSet, Pod, Service의 동작 원리를 이해하였다.
 
-Docker 환경에서 실행되던 Flask 애플리케이션을 Kubernetes 환경으로 이전하였다.
-
-Minikube 기반 Kubernetes Cluster를 구축하고 Deployment, ReplicaSet, Pod, Service를 직접 구성하였다.
-
-또한 AWS EBS 온라인 확장과 Linux 파일시스템 확장을 경험하였으며, ImagePull 오류를 해결하면서 Docker Image와 Kubernetes 이미지 관리 방식의 차이를 이해할 수 있었다.
-
-
-# DAY3
-
-## 구현 목표
-
-- GitHub Actions CI Pipeline 구축
-- Docker Hub Repository 생성
-- GitHub Secrets 등록
-- Docker Image 자동 Build
-- Docker Image 자동 Push
-- Docker Hub Image 검증
+또한 AWS EBS 온라인 확장과 Linux 파일시스템 확장을 직접 수행하였으며, ImagePull 오류를 해결하면서 Docker Image와 Kubernetes Image 관리 방식의 차이와 Kubernetes Self-Healing 메커니즘을 학습하였다.
 
 ---
 
-## 구현 결과
+## Detail Documentation
 
-✅ Docker Hub Repository 생성
+📄 Technical Documentation
 
-✅ GitHub Secrets 등록
-
-✅ GitHub Actions Workflow 작성
-
-✅ Docker Build 자동화
-
-✅ Docker Hub Push 성공
-
-✅ Docker Pull 검증
-
-✅ Docker Container 실행 검증
-
-✅ GitHub Hosted Runner 기반 CI Pipeline 검증
+- [DAY2 – Kubernetes Platform](docs/project-diary/day2/day2.md)
 
 
+# DAY3 – Continuous Integration
+
+## Key Deliverables
+
+- GitHub Actions 기반 CI Pipeline 구축
+- Docker Hub Repository 및 GitHub Secrets 구성
+- Docker Image 자동 Build 및 Push 구현
+- GitHub Hosted Runner 기반 CI 환경 구축
+- Docker Hub Image Pull 및 Container 실행 검증
+
+---
 
 ## CI Pipeline
 
@@ -486,9 +465,9 @@ Docker Hub
 Image Validation
 ```
 
+---
 
-
-## 주요 구현 결과
+## Screenshots
 
 ![GitHub Actions Workflow Success](docs/screenshots/day3/14-github-actions-workflow-success.jpg)
 
@@ -498,52 +477,33 @@ Image Validation
 
 ![Docker Hub Image Pull Validation](docs/screenshots/day3/17-dockerhub-image-pull-validation.jpg)
 
-## Git Commit
+---
 
-```text
-feat(day3): configure github actions ci pipeline
-docs(day3): update documentation
-```
+## Lessons Learned
 
+GitHub Actions를 이용하여 Git Push만으로 Docker Image Build와 Docker Hub Push가 자동으로 수행되는 CI(Continuous Integration) 환경을 구축하였다.
 
-## DAY3 회고
-
-GitHub Actions 기반 CI Pipeline을 구축하여 Git Push만으로 Docker Image Build와 Docker Hub Push가 자동으로 수행되는 환경을 구성하였다. 또한 Docker Hub에서 이미지를 다시 Pull하여 컨테이너 실행까지 검증함으로써 CI 결과물이 실제 운영 가능한 상태임을 확인하였다.
-
-
-# DAY4
-
-## 구현 목표
-
-- ArgoCD 설치
-- Git Repository 연동
-- GitOps 기반 Continuous Delivery(CD) 구축
-- Kubernetes Application 생성
-- Manual Sync 검증
-- Auto Sync 검증
-- Git 변경 시 Kubernetes 자동 반영 검증
+또한 GitHub Hosted Runner의 동작 원리를 이해하고, Docker Hub에서 이미지를 다시 Pull하여 컨테이너 실행까지 검증함으로써 CI 파이프라인의 결과물이 실제 운영 가능한 상태임을 확인하였다.
 
 ---
 
-## 구현 결과
+## Detail Documentation
 
-✅ ArgoCD 설치
+📄 Technical Documentation
 
-✅ ArgoCD Dashboard 구성
+- [DAY3 – Continuous Integration](docs/project-diary/day3/day3.md)
 
-✅ Git Repository 연동
 
-✅ Kubernetes Application 생성
+# DAY4 – GitOps Continuous Delivery
 
-✅ Manual Sync 검증
+## Key Deliverables
 
-✅ Auto Sync 구성
-
-✅ Git 변경 자동 감지
-
-✅ Kubernetes Deployment 자동 변경
-
-✅ Replica 변경 자동 반영 검증
+- ArgoCD 기반 GitOps 환경 구축
+- Git Repository와 Kubernetes Cluster 연동
+- Kubernetes Application 생성
+- Manual Sync 및 Auto Sync 검증
+- Git 변경 사항의 Kubernetes 자동 반영 검증
+- Desired State와 Actual State 동기화 확인
 
 ---
 
@@ -591,7 +551,7 @@ Pod
 
 ---
 
-## 주요 구현 결과
+## Screenshots
 
 ![ArgoCD Installed](docs/screenshots/day4/02-argocd-installed.jpg)
 
@@ -613,67 +573,33 @@ Pod
 
 ---
 
-## Git Commit
-
-```text
-feat(day4): implement argocd gitops cd pipeline
-```
-
----
-
-## DAY4 회고
+## Lessons Learned
 
 ArgoCD를 구축하여 Git Repository를 Single Source of Truth로 사용하는 GitOps 기반 Continuous Delivery 환경을 구현하였다.
 
-GitHub Repository와 Kubernetes Cluster를 연결하고 Kubernetes Application을 생성하여 Manual Sync와 Auto Sync를 모두 검증하였다.
+GitHub Repository와 Kubernetes Cluster를 연결하고 Manual Sync와 Auto Sync를 모두 검증하면서 Git 변경 사항이 Kubernetes Deployment와 Pod에 자동으로 반영되는 GitOps 운영 방식을 이해하였다.
 
-Git Manifest 변경 시 Kubernetes Deployment와 Pod가 자동으로 변경되는 과정을 직접 확인하면서 GitOps 기반 운영 방식의 동작 원리를 이해할 수 있었다.
-
-또한 Target Revision을 Feature Branch로 변경하여 Git Branch별 GitOps 운영 방식을 검증하였으며, ArgoCD의 Desired State와 Actual State 동기화 과정을 직접 확인하였다.
-
-
-# DAY5
-
-## 구현 목표
-
-- Monitoring Namespace 생성
-- Helm 설치
-- Prometheus 구축
-- Grafana 구축
-- Node Exporter 구축
-- kube-state-metrics 구축
-- Kubernetes Monitoring 구축
-- Grafana Dashboard 검증
+또한 Target Revision과 Desired State, Actual State의 개념을 직접 검증하며 GitOps 기반 Kubernetes 운영 원리를 체득하였다.
 
 ---
 
-## 구현 결과
+## Detail Documentation
 
-✅ Monitoring Namespace 생성
+📄 Technical Documentation
 
-✅ Helm 설치
+- [DAY4 – GitOps Continuous Delivery](docs/project-diary/day4/day4.md)
 
-✅ Prometheus Community Repository 등록
 
-✅ kube-prometheus-stack 설치
+# DAY5 – Monitoring & Observability
 
-✅ Prometheus 구축
+## Key Deliverables
 
-✅ Grafana 구축
-
-✅ Prometheus Operator 구축
-
-✅ Node Exporter 구축
-
-✅ kube-state-metrics 구축
-
-✅ Kubernetes Cluster Monitoring
-
-✅ Kubernetes Node Monitoring
-
-✅ Grafana Dashboard 검증
-
-✅ Kubernetes API Server 장애 해결
+- Prometheus 기반 Monitoring 플랫폼 구축
+- Grafana Dashboard 구성
+- Prometheus Operator 및 kube-prometheus-stack 적용
+- Node Exporter와 kube-state-metrics 구성
+- Kubernetes Cluster 및 Node Monitoring 검증
+- Kubernetes API Server 장애 분석 및 복구
 
 ---
 
@@ -712,7 +638,7 @@ Git Manifest 변경 시 Kubernetes Deployment와 Pod가 자동으로 변경되�
 
 ---
 
-## 주요 구현 결과
+## Screenshots
 
 ![Monitoring Pods Ready](docs/screenshots/day5/10-monitoring-pods-ready.jpg)
 
@@ -726,67 +652,34 @@ Git Manifest 변경 시 Kubernetes Deployment와 Pod가 자동으로 변경되�
 
 ---
 
-## Git Commit
+## Lessons Learned
 
-```text
-feat(day5): implement kubernetes monitoring platform
+Prometheus와 Grafana를 이용하여 Kubernetes Monitoring 플랫폼을 구축하고, Node Exporter와 kube-state-metrics를 통해 Cluster와 Node의 상태를 실시간으로 수집하고 시각화하였다.
 
-docs(day5): update monitoring documentation
-```
+또한 Monitoring Stack 구축 과정에서 Kubernetes API Server 장애를 직접 분석하고 EC2 인스턴스를 증설하여 문제를 해결하면서 운영 환경에서 발생할 수 있는 장애 분석과 복구 과정을 경험하였다.
 
----
-
-## DAY5 회고
-
-Prometheus와 Grafana를 이용하여 Kubernetes Monitoring 플랫폼을 구축하였다.
-
-Node Exporter와 kube-state-metrics를 이용해 Kubernetes Cluster와 Node의 상태를 실시간으로 수집하고 Grafana Dashboard를 통해 시각화하였다.
-
-또한 Monitoring Stack 구축 과정에서 Kubernetes API Server 장애를 직접 분석하고 EC2 인스턴스를 증설하여 문제를 해결하면서 실제 운영 환경에서 발생할 수 있는 장애 대응 경험을 수행하였다.
-
-이를 통해 구축(Build) 중심의 프로젝트를 운영(Operation) 단계까지 확장할 수 있었다.
+이를 통해 프로젝트를 구축(Build) 중심에서 운영(Operation) 관점까지 확장하며 Monitoring 플랫폼의 중요성을 이해할 수 있었다.
 
 ---
 
-# DAY6
+## Detail Documentation
 
-## 구현 목표
+📄 Technical Documentation
 
-- Trivy 설치
-- Docker Image 취약점 분석
-- GitHub Actions Security Scan
-- Security Gate 적용
-- Kubernetes Secret 적용
-- ConfigMap 적용
-- NetworkPolicy 적용
-- DevSecOps 보안 자동화 구축
+- [DAY5 – Monitoring & Observability](docs/project-diary/day5/day5.md)
 
 ---
 
+# DAY6 – DevSecOps Security
 
-## 구현 결과
+## Key Deliverables
 
-✅ Trivy 설치
-
-✅ Docker Image 취약점 분석
-
-✅ GitHub Actions Security Scan
-
-✅ Security Gate 적용
-
-✅ HIGH / CRITICAL 취약점 차단
-
-✅ GitHub Actions Workflow 차단 검증
-
-✅ Kubernetes Secret 적용
-
-✅ ConfigMap 적용
-
-✅ NetworkPolicy 적용
-
-✅ Calico CNI 기반 NetworkPolicy 검증
-
-✅ DevSecOps 보안 자동화 구축
+- Trivy 기반 Container Image Security Scan 구축
+- GitHub Actions Security Gate 적용
+- HIGH / CRITICAL 취약점 자동 차단 검증
+- Kubernetes Secret 및 ConfigMap 적용
+- Calico CNI 기반 NetworkPolicy 구성
+- Pod 간 통신 제어 및 DevSecOps 보안 자동화 구현
 
 ---
 
@@ -843,9 +736,10 @@ NetworkPolicy
 
 Pod (Flask)
 ```
+
 ---
 
-## 주요 구현 결과
+## Screenshots
 
 ![Trivy Image Scan Result](docs/screenshots/day6/09-trivy-image-scan-result.jpg)
 
@@ -859,188 +753,81 @@ Pod (Flask)
 
 ---
 
-## Git Commit
+## Lessons Learned
 
-```text
-feat(day6): implement devsecops security automation
-```
+Trivy를 이용한 Container Image 취약점 분석과 GitHub Actions Security Gate를 통해 CI 단계에서 보안을 자동화하는 DevSecOps 환경을 구축하였다.
+
+또한 Kubernetes Secret과 ConfigMap을 이용하여 애플리케이션 설정과 민감한 정보를 분리하고, Calico CNI 기반 NetworkPolicy를 적용하여 Pod 간 통신을 최소 권한 원칙에 따라 제어하였다.
+
+특히 NetworkPolicy는 Kubernetes 자체가 아닌 CNI가 실제 네트워크를 제어한다는 점을 직접 검증하며 Kubernetes 보안 구조와 DevSecOps 운영 방식을 심도 있게 이해할 수 있었다.
+
 ---
 
-## DAY6 회고
+## Detail Documentation
 
-DAY6에서는 DevSecOps 관점에서 Kubernetes 보안 자동화 환경을 구축하였다.
+📄 Technical Documentation
 
-Trivy를 이용하여 Docker Image 취약점을 분석하고 GitHub Actions에 Security Scan과 Security Gate를 추가하여 HIGH 및 CRITICAL 취약점이 존재하는 이미지는 자동으로 배포되지 않도록 구성하였다.
-
-또한 Kubernetes Secret과 ConfigMap을 적용하여 애플리케이션 설정과 민감한 정보를 분리하였으며, NetworkPolicy를 이용하여 Pod 간 통신을 최소 권한 원칙에 따라 제어하였다.
-
-특히 Calico CNI를 적용하여 NetworkPolicy가 실제로 트래픽을 차단하고 허용하는 과정을 직접 검증함으로써 단순한 리소스 생성이 아닌 보안 정책의 실제 동작까지 확인하였다.
-
-또한 NetworkPolicy는 Kubernetes만으로 동작하는 것이 아니라 Calico CNI가 실제 패킷을 제어한다는 점을 직접 검증하면서 Kubernetes 네트워크 보안 구조를 이해할 수 있었다.
-
-이를 통해 기존 CI/CD 파이프라인에 보안(Security)을 통합한 DevSecOps 환경을 완성하였다.
+- [DAY6 – DevSecOps Security](docs/project-diary/day6/day6.md)
 
 
-# 현재까지 구현 흐름
+# Project Evolution
 
 ```text
 DAY1
-
+Infrastructure
 AWS EC2
-
-↓
-
 Docker
+Flask API
 
-↓
-
-Flask
-
-────────────────────────
+        │
+        ▼
 
 DAY2
-
-Docker
-
-↓
-
+Container Orchestration
 Kubernetes
-
-↓
-
 Deployment
-
-↓
-
 Service
 
-────────────────────────
+        │
+        ▼
 
 DAY3
-
-Git Push
-
-↓
-
+Continuous Integration
 GitHub Actions
-
-↓
-
 Docker Hub
 
-↓
-
-Image Validation
-
-────────────────────────
+        │
+        ▼
 
 DAY4
+GitOps Continuous Delivery
+ArgoCD
+Auto Sync
 
-Git Push
-
-↓
-
-GitHub Actions
-
-↓
-
-Docker Hub
-
-↓
-
-ArgoCD Auto Sync
-
-↓
-
-Deployment
-
-↓
-
-ReplicaSet
-
-↓
-
-Pod
-
-────────────────────────
+        │
+        ▼
 
 DAY5
-
-Pod
-
-        │
-
- ┌──────┴──────┐
- │             │
-
-Node Exporter
-
-kube-state-metrics
-
-        │
-
+Monitoring & Observability
 Prometheus
-
-        │
-
 Grafana
 
         │
-
-Monitoring Dashboard
-
-────────────────────────
+        ▼
 
 DAY6
-
-Git Push
-
-↓
-
-GitHub Actions
-
-↓
-
-Trivy Security Scan
-
-↓
-
+DevSecOps Security
+Trivy
 Security Gate
-
-↓
-
-Docker Hub
-
-↓
-
-ArgoCD
-
-↓
-
-Kubernetes
-
-↓
-
-Secret
-
-↓
-
-ConfigMap
-
-↓
-
 NetworkPolicy
-
-
 ```
 
 
-# Next Step
+# Future Improvements
 
-DAY7에서는 다음 내용을 진행할 예정입니다.
-
-- README 최종 정리
-- Master Document v1.6 작성
-- DAY6.md 작성
-- 면접 예상 질문 정리
-- 프로젝트 최종 리팩토링
+- Amazon EKS Migration
+- Terraform Infrastructure as Code
+- AWS Secrets Manager Integration
+- OPA Gatekeeper Policy Enforcement
+- Falco Runtime Security
+- Kubernetes Admission Controller

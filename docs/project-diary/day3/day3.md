@@ -206,7 +206,7 @@ DAY3 작업은 최신 Main Branch를 기준으로 시작되었다.
 
 ### 캡처
 
-![Git Main Branch 최신화 확인](docs/screenshots/day3/01-main-branch-updated.jpg)
+![Git Main Branch 최신화 확인](../../screenshots/day3/01-main-branch-updated.jpg)
 
 ---
 
@@ -302,7 +302,7 @@ GitHub Actions Workflow 작성, Docker Hub 연동, CI Pipeline 구축 및 검증
 
 ### 캡처
 
-![DAY3 Feature Branch 생성](docs/screenshots/day3/2. DAY3 Feature Branch 생성.jpg)
+![DAY3 Feature Branch 생성](../../screenshots/day3/02-feature-branch-created.jpg)
 
 ---
 
@@ -393,7 +393,7 @@ DAY3에서는 Docker Hub Repository를 구축함으로써 Docker Image를 중앙
 
 ### 캡처
 
-![Docker Hub Repository 생성 완료](docs/screenshots/day3/3. Docker Hub Repository 생성 완료.jpg)
+![Docker Hub Repository 생성 완료](../../docs/screenshots/day3/03-dockerhub-repository-created.jpg)
 
 ---
 
@@ -490,11 +490,11 @@ GitHub Repository Secrets를 이용하여 인증 정보를 Workflow와 분리하
 
 ### 캡처
 
-![GitHub Repository Secrets 설정 화면](docs/screenshots/day3/4. GitHub Repository Secrets 설정 화면.jpg)
+![GitHub Repository Secrets 설정 화면](../../screenshots/day3/04-github-repository-secrets-page.jpg)
 
-![Docker Hub Access Token 생성](docs/screenshots/day3/5. Docker Hub Access Token 생성.jpg)
+![Docker Hub Access Token 생성](../../screenshots/day3/05-dockerhub-access-token.jpg)
 
-![GitHub Repository Secrets 등록 완료](docs/screenshots/day3/6. GitHub Repository Secrets 등록 완료.jpg)
+![GitHub Repository Secrets 등록 완료](../../screenshots/day3/06-github-secrets-added.jpg)
 
 ---
 
@@ -584,7 +584,7 @@ Git Push가 발생하면 GitHub는 Repository 내부의 Workflow를 검색하고
 
 ### 캡처
 
-![GitHub Actions Workflow 디렉터리 생성 완료](docs/screenshots/day3/7. GitHub Actions Workflow 디렉터리 생성 완료.jpg)
+![GitHub Actions Workflow 디렉터리 생성 완료](../../screenshots/day3/07-github-actions-workflow-created.jpg)
 
 ---
 
@@ -691,7 +691,7 @@ GitHub Actions는 Push Event를 감지한 후 Repository 내부의 `.github/work
 
 ### 캡처
 
-![GitHub Actions Workflow Trigger 작성](docs/screenshots/day3/8. GitHub Actions Workflow Trigger 작성.jpg)
+![GitHub Actions Workflow Trigger 작성](../../screenshots/day3/08-workflow-trigger-configured.jpg)
 
 ---
 
@@ -801,7 +801,7 @@ Runner는 Workflow 실행이 완료되면 자동으로 삭제되므로 항상 �
 
 ### 캡처
 
-![GitHub Actions Job 및 Runner 설정](docs/screenshots/day3/9. GitHub Actions Job 및 Runner 설정.jpg)
+![GitHub Actions Job 및 Runner 설정](../../screenshots/day3/09-github-actions-job-runner-configured.jpg)
 
 ---
 
@@ -918,7 +918,7 @@ Checkout 과정이 수행되지 않으면 Dockerfile을 찾을 수 없으므로 
 
 ### 캡처
 
-![GitHub Actions Checkout Step 작성](docs/screenshots/day3/10. GitHub Actions Checkout Step 작성.jpg)
+![GitHub Actions Checkout Step 작성](../../screenshots/day3/10-github-actions-checkout-step.jpg)
 
 ---
 
@@ -1025,7 +1025,7 @@ Runner 내부에서는 Secrets가 메모리에서만 사용되며 Workflow가 �
 
 ### 캡처
 
-![GitHub Actions Docker Hub Login Step 작성](docs/screenshots/day3/11. GitHub Actions Docker Hub Login Step 작성.jpg)
+![GitHub Actions Docker Hub Login Step 작성](../../screenshots/day3/11-dockerhub-login-step.jpg)
 
 ---
 
@@ -1134,15 +1134,15 @@ Buildx는 Dockerfile과 프로젝트 소스코드를 이용하여 Docker Image�
 
 ### 캡처
 
-![GitHub Actions Workflow 작성 완료](docs/screenshots/day3/12. GitHub Actions Workflow 작성 완료.jpg)
+![GitHub Actions Workflow 작성 완료](../../screenshots/day3/12-github-actions-workflow-completed.jpg)
 
-![GitHub Actions Workflow Push 완료](docs/screenshots/day3/13. GitHub Actions Workflow Push 완료.jpg)
+![GitHub Actions Workflow Push 완료](../../screenshots/day3/13-github-actions-workflow-pushed.jpg)
 
-![GitHub Actions Workflow 실행 성공](docs/screenshots/day3/14. GitHub Actions Workflow 실행 성공.jpg)
+![GitHub Actions Workflow 실행 성공](../../screenshots/day3/14-github-actions-workflow-success.jpg)
 
-![GitHub Actions Job 실행 결과](docs/screenshots/day3/15. GitHub Actions Job 실행 결과.jpg)
+![GitHub Actions Job 실행 결과](../../screenshots/day3/15-github-actions-job-result.jpg)
 
-![Docker Hub Image Push 완료](docs/screenshots/day3/16. Docker Hub Image Push 완료.jpg)
+![Docker Hub Image Push 완료](../../screenshots/day3/16-dockerhub-image-pushed.jpg)
 
 ---
 
@@ -1258,13 +1258,13 @@ Runner는 Docker Image를 Build하고 Docker Hub에 Push한 후 자동으로 종
 
 ### 캡처
 
-![GitHub Actions Workflow 실행 성공](docs/screenshots/day3/14. GitHub Actions Workflow 실행 성공.jpg)
+![GitHub Actions Workflow 실행 성공](../../screenshots/day3/14-github-actions-workflow-success.jpg)
 
-![GitHub Actions Job 실행 결과](docs/screenshots/day3/15. GitHub Actions Job 실행 결과.jpg)
+![GitHub Actions Job 실행 결과](../../screenshots/day3/15-github-actions-job-result.jpg)
 
-![Docker Hub Image Push 완료](docs/screenshots/day3/16. Docker Hub Image Push 완료.jpg)
+![Docker Hub Image Push 완료](../../screenshots/day3/16-dockerhub-image-pushed.jpg)
 
-![Docker Hub Image Pull 및 Container 실행 검증](docs/screenshots/day3/17. Docker Hub Image Pull 및 Container 실행 검증.jpg)
+![Docker Hub Image Pull 및 Container 실행 검증](../../screenshots/day3/17-dockerhub-image-pull-validation.jpg)
 
 ---
 

@@ -189,9 +189,9 @@ SSH Key를 생성한 후 GitHub에 Public Key를 등록하였다.
 
 ### 캡처
 
-![alt text](<1. ssh -T.jpg>)
+![alt text](../../screenshots/day2/01-ssh-connection.jpg)
 
-![alt text](<2. git remote -v.jpg>)
+![alt text](../../screenshots/day2/02-git-remote-check.jpg)
 
 
 
@@ -231,11 +231,11 @@ DAY2 작업을 위한 `feature/day2-kubernetes` 브랜치를 생성하였다.
 
 ### 캡처
 
-![alt text](<3. feature branch.jpg>)
+![alt text](../../screenshots/day2/03-feature-branch-created.jpg)
 
-![alt text](<4. git branch.jpg>)
+![alt text](../../screenshots/day2/04-git-branch-list.jpg)
 
-![alt text](<5. git push -u origin feature.jpg>)
+![alt text](../../screenshots/day2/05-feature-branch-pushed.jpg)
 
 
 ## 7-3. Minikube 설치
@@ -276,7 +276,7 @@ Minikube를 정상적으로 설치하였으며 Version 정보를 통해 설치�
 
 ### 캡처
 
-![alt text](<6. Minikube 설치 및 Version 확인.jpg>)
+![alt text](../../screenshots/day2/06-minikube-installed.jpg)
 
 
 
@@ -318,7 +318,7 @@ kubectl 설치가 완료되었으며 Client Version을 통해 정상적으로 �
 
 ### 캡처
 
-![alt text](<7. kubectl 설치 및 Version 확인.jpg>)
+![alt text](../../screenshots/day2/07-kubectl-installed.jpg)
 
 
 ## 7-5. AWS EBS 20GB 온라인 확장
@@ -355,9 +355,9 @@ AWS 콘솔에서 EBS Volume을 20GB로 확장한 후 Linux FileSystem을 확장�
 
 ### 캡처
 
-![alt text](<8. AWS EBS 20GB 확장.jpg>)
+![alt text](../../screenshots/day2/08-aws-ebs-expanded.jpg)
 
-![alt text](<9. Linux 파일시스템 확장 완료.jpg>)
+![alt text](../../screenshots/day2/09-linux-filesystem-expanded.jpg)
 
 
 ## 7-6. Kubernetes Cluster 구축
@@ -398,9 +398,9 @@ Cluster 생성이 완료된 후 `kubectl get nodes` 명령을 통해 Control Pla
 
 ### 캡처
 
-![alt text](<10. Kubernetes Cluster 생성 성공.jpg>)
+![alt text](../../screenshots/day2/10-kubernetes-cluster-created.jpg)
 
-![alt text](<11. Kubernetes Node Ready 확인.jpg>)
+![alt text](../../screenshots/day2/11-kubernetes-node-ready.jpg)
 
 
 ## 7-7. Deployment 생성
@@ -441,9 +441,9 @@ Deployment를 생성하여 ReplicaSet과 Pod가 자동으로 생성되는 것을
 
 ### 캡처
 
-![alt text](<13. Kubernetes ImagePull 오류 발생.jpg>)
+![alt text](../../screenshots/day2/12-kubernetes-imagepull-error.jpg)
 
-![alt text](<14. Kubernetes Pod Running 확인.jpg>)
+![alt text](../../screenshots/day2/13-kubernetes-pod-running.jpg)
 
 ## 7-8. Service(NodePort) 생성
 
@@ -485,7 +485,7 @@ NodePort Service가 정상적으로 생성되었으며 EC2 내부에서 curl 명
 
 ### 캡처
 
-![alt text](<15. Kubernetes Service 및 Flask 응답 확인.jpg>)
+![alt text](../../screenshots/day2/14-kubernetes-service-flask-response.jpg)
 
 ## 7-9. Kubernetes Self-Healing 검증
 

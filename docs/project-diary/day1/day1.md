@@ -174,7 +174,7 @@ pwd
 
 ### 캡처
 
-![alt text](<1. pwd - 현재 작업 디렉터리 확인.jpg>)
+![alt text](../../screenshots/day1/01-working-directory.jpg)
 
 ---
 
@@ -231,7 +231,7 @@ APT 저장소의 최신 패키지 목록을 다운로드하는 명령어이다.
 
 ### 캡처
 
-![alt text](<2. sudo apt update - 패키지 목록 최신화.jpg>)
+![alt text](../../screenshots/day1/02-apt-update.jpg)
 
 
 
@@ -322,7 +322,7 @@ Docker 공식 Repository를 사용하기 위한 기반 환경이 구성되었다
 
 ### 캡처
 
-![alt text](<3. sudo apt install -y ca-certificates curl gnupg lsb-release.jpg>)
+![alt text](../../screenshots/day1/03-docker-prerequisites-install.jpg)
 ---
 
 ### 실무 TIP
@@ -415,7 +415,7 @@ Docker Repository를 신뢰하기 위한 준비 단계가 완료되었다.
 
 ### 캡처
 
-![alt text](<4. sudo install -m 0755 -d etc apt keyrings.jpg>)
+![alt text](../../screenshots/day1/04-docker-keyrings-directory.jpg)
 
 ---
 
@@ -508,7 +508,7 @@ Docker 공식 Repository를 신뢰할 수 있는 저장소로 등록하기 위�
 
 ### 캡처
 
-![alt text](<5. Docker GPG Key 등록.jpg>)
+![alt text](../../screenshots/day1/05-docker-gpg-key.jpg)
 
 ---
 
@@ -602,7 +602,7 @@ Ubuntu는 Docker Repository를 새로운 패키지 저장소로 인식하게 되
 
 ### 캡처
 
-![alt text](<6. Docker 공식 Repository 등록.jpg>)
+![alt text](../../screenshots/day1/06-docker-repository-added.jpg)
 
 ---
 
@@ -702,7 +702,7 @@ Ubuntu가 Docker Repository를 정상적으로 인식하였다.
 
 ### 캡처
 
-![alt text](<7. Docker Repository 패키지 목록 갱신.jpg>)
+![alt text](../../screenshots/day1/07-docker-repository-updated.jpg)
 
 ---
 
@@ -824,7 +824,7 @@ Docker Engine 설치가 완료되면서 Docker Image 생성(Build), Docker Conta
 
 ### 캡처
 
-![alt text](<8. Docker Engine 설치.jpg>)
+![alt text](../../screenshots/day1/08-docker-engine-installation.jpg)
 
 ---
 
@@ -977,9 +977,9 @@ Docker는 CLI와 Docker Daemon이 Unix Socket(`/var/run/docker.sock`)을 통해 
 
 ### 캡처
 
-![alt text](<9-1. docker version - Docker 설치 확인.jpg>)
+![alt text](../../screenshots/day1/09-docker-version-check.jpg)
 
-![alt text](<9-2. docker version - Docker Client,Server 확인 Trouble Shooting.jpg>)
+![alt text](../../screenshots/day1/10-docker-permission-troubleshooting.jpg)
 
 ---
 
@@ -1147,26 +1147,27 @@ Container 내부에서 Flask API가 실행되었으며 Port Mapping을 통해 EC
 
 #### 그림 13. Docker Image 생성
 
-![alt text](<13. Docker Image 생성.jpg>)
+![alt text](../../screenshots/day1/14-docker-image-built.jpg)
 
 #### 그림 14. Docker Image 확인
 
-![alt text](<14. Docker Image 확인.jpg>)
+![alt text](../../screenshots/day1/15-docker-image-list.jpg)
 
 #### 그림 15. Flask Container 실행
 
-![alt text](<15. Flask Container 실행.jpg>)
+![alt text](../../screenshots/day1/16-flask-container-running.jpg)
 
 #### 그림 16. Docker Container 상태 확인
 
-![alt text](<16. Docker Container 확인.jpg>)
+![alt text](../../screenshots/day1/17-docker-container-list.jpg)
 
 #### 그림 17. Flask API 정상 동작 확인
-alt text
+
+![alt text](../../screenshots/day1/18-flask-api-response-success.jpg)
 
 #### 그림 18. Docker Container 로그 확인
 
-![alt text](<18. Docker Container 로그 확인.jpg>)
+![alt text](../../screenshots/day1/19-docker-container-logs.jpg)
 
 ---
 
