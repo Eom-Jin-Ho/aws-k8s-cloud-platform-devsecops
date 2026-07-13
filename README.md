@@ -90,7 +90,7 @@
 | DAY4 | GitOps Continuous Delivery | ✅ |
 | DAY5 | Monitoring & Observability | ✅ |
 | DAY6 | DevSecOps Security | ✅ |
-| DAY7 | Documentation & Portfolio | 🚧 |
+| DAY7 | Documentation & Portfolio | ✅ |
 
 
 
@@ -357,9 +357,9 @@ aws-k8s-cloud-platform-devsecops
 
 ![Docker Engine Installation](docs/screenshots/day1/08-docker-engine-installation.jpg)
 
-![Flask Container Running](docs/screenshots/day1/15-flask-container-running.jpg)
+![Flask Container Running](docs/screenshots/day1/16-flask-container-running.jpg)
 
-![Flask API Response Success](docs/screenshots/day1/17-flask-api-response-success.jpg)
+![Flask API Response Success](docs/screenshots/day1/18-flask-api-response-success.jpg)
 
 ---
 
@@ -398,9 +398,9 @@ Docker Engine 설치부터 Flask API 컨테이너 실행까지 직접 구축하�
 
 ![Kubernetes Node Ready](docs/screenshots/day2/11-kubernetes-node-ready.jpg)
 
-![Kubernetes Pod Running](docs/screenshots/day2/14-kubernetes-pod-running.jpg)
+![Kubernetes Pod Running](docs/screenshots/day2/13-kubernetes-pod-running.jpg)
 
-![Kubernetes Service Flask Response](docs/screenshots/day2/15-kubernetes-service-flask-response.jpg)
+![Kubernetes Service Flask Response](docs/screenshots/day2/14-kubernetes-service-flask-response.jpg)
 
 ---
 
